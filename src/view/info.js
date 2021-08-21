@@ -1,4 +1,6 @@
-export const createSiteInfoTemplate = (data) => {
+import {createElement} from './utils.js';
+
+const createSiteInfoTemplate = (data) => {
   const listTowns = [];
   const listDate = [];
   for (const variable of data) {
@@ -24,3 +26,26 @@ export const createSiteInfoTemplate = (data) => {
   </p>
 </section>`;
 };
+
+export default class SiteInfo {
+  constructor(dataNew) {
+    this._element = null;
+    this.data = dataNew;
+  }
+
+  getTemplate() {
+    return createSiteInfoTemplate(this.data);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
