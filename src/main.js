@@ -3,6 +3,7 @@ import SiteFilterView from './view/filter.js';
 import SiteInfoView from './view/info.js';
 import SiteSortView from './view/sorting.js';
 import SiteListView from './view/list.js';
+import SitePointsCreationVew from './view/pointCreation.js';
 import {createPoints} from './mock/task.js';
 import {createElement, renderElement, RenderPosition} from './view/utils.js';
 
@@ -42,4 +43,8 @@ for (const listTrip of listTrips) {
   renderElement(ulElement, createElement(listTrip), RenderPosition.BEFOREEND);
 }
 
-
+// Вставляем форму создания точки
+const siteButtonElement = document.querySelector('.trip-main__event-add-btn');
+siteButtonElement.addEventListener('click', ()=>{renderElement(ulElement, new SitePointsCreationVew().getElement(), RenderPosition.AFTERBEGIN);}, false);
+//console.log(siteButtonElement);
+//renderElement(ulElement, new SitePointsCreationVew().getElement(), RenderPosition.AFTERBEGIN);

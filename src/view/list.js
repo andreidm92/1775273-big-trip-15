@@ -1,4 +1,4 @@
-import {createElement} from './utils.js';
+import AbstractView from './abstract.js';
 
 const createSiteListTemplate = (points) => {
   const listNew = [];
@@ -45,25 +45,13 @@ const createSiteListTemplate = (points) => {
   return listNew;
 };
 
-export default class SiteList {
+export default class SiteList extends AbstractView {
   constructor(dataNew) {
-    this._element = null;
+    super();
     this.data = dataNew;
   }
 
   getTemplate() {
     return createSiteListTemplate(this.data);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

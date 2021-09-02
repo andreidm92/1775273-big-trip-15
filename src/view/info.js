@@ -1,4 +1,4 @@
-import {createElement} from './utils.js';
+import AbstractView from './abstract.js';
 
 const createSiteInfoTemplate = (data) => {
   const listTowns = [];
@@ -27,25 +27,13 @@ const createSiteInfoTemplate = (data) => {
 </section>`;
 };
 
-export default class SiteInfo {
+export default class SiteInfo extends AbstractView {
   constructor(dataNew) {
-    this._element = null;
+    super();
     this.data = dataNew;
   }
 
   getTemplate() {
     return createSiteInfoTemplate(this.data);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
